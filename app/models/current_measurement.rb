@@ -1,0 +1,2 @@
+class CurrentMeasurement < ApplicationRecord
+end

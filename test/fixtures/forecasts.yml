@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  max_temperature: 1.5
+  min_temperature: 1.5
+  avg_humidity: 1.5
+  precipitation_probability: 1.5
+  wind_speed: 1.5
+  wind_direction: MyString
+  timestamp: 2023-09-04 18:00:08
+
+two:
+  max_temperature: 1.5
+  min_temperature: 1.5
+  avg_humidity: 1.5
+  precipitation_probability: 1.5
+  wind_speed: 1.5
+  wind_direction: MyString
+  timestamp: 2023-09-04 18:00:08
