@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_04_160008) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_04_160137) do
   create_table "current_measurements", force: :cascade do |t|
     t.float "temperature"
     t.float "humidity"
@@ -32,6 +32,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_04_160008) do
     t.datetime "timestamp"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "wind_speed_bft"
   end
 
 end

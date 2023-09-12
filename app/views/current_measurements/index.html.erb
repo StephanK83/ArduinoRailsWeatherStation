@@ -1,0 +1,10 @@
+<h1>Current Measurements</h1>
+<ul>
+  <% @current_measurements.each do |measurement| %>
+    <li>
+      Temperature: <%= measurement.temperature %>,
+      Humidity: <%= measurement.humidity %>,
+      Pressure: <%= measurement.pressure %>
+    </li>
+  <% end %>
+</ul>
