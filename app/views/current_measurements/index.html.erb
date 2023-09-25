@@ -2,6 +2,7 @@
 <ul>
   <% @current_measurements.each do |measurement| %>
     <li>
+      Timestamp: <%= measurement.created_at.strftime('%Y-%m-%d %H:%M:%S') %><br>
       Temperature: <%= measurement.temperature %>,
       Humidity: <%= measurement.humidity %>,
       Pressure: <%= measurement.pressure %>
