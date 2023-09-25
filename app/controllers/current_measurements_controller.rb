@@ -3,10 +3,11 @@ class CurrentMeasurementsController < ApplicationController
 
   def index
     @current_measurements = CurrentMeasurement.all
-
     respond_to do |format|
-      format.html # standardmäßig, zeigt die HTML-View
-      format.csv { send_data @current_measurements.to_csv }
+      format.html
+      format.csv do
+        send_data @current_measurements.to_csv, type: 'text/csv', filename: 'current_measurements.csv'
+      end
     end
   end
 
@@ -22,6 +23,6 @@ class CurrentMeasurementsController < ApplicationController
   private
 
   def measurement_params
-    params.require(:current_measurement).permit(:temperature, :humidity, :pressure, :wind_speed, :wind_direction, :rainfall)
+    params.require(:current_measurement).permit(:temperature, :humidity)
   end
 end
