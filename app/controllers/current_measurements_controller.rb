@@ -6,7 +6,7 @@ class CurrentMeasurementsController < ApplicationController
 
     respond_to do |format|
       format.html # standardmäßig, zeigt die HTML-View
-      format.csv { send_data @current_measurements.to_csv, filename: "current_measurements-#{Date.today}.csv" }
+      format.csv { send_data @current_measurements.to_csv }
     end
   end
 
