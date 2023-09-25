@@ -3,6 +3,11 @@ class CurrentMeasurementsController < ApplicationController
 
   def index
     @current_measurements = CurrentMeasurement.all
+
+    respond_to do |format|
+      format.html # standardmäßig, zeigt die HTML-View
+      format.csv { send_data @current_measurements.to_csv, filename: "current_measurements-#{Date.today}.csv" }
+    end
   end
 
   def create
@@ -11,15 +16,6 @@ class CurrentMeasurementsController < ApplicationController
       render json: { status: 'success' }
     else
       render json: { status: 'error' }
-    end
-  end
-
-  def index
-    @current_measurements = CurrentMeasurement.all
-
-    respond_to do |format|
-      format.html # standardmäßig, zeigt die HTML-View
-      format.csv { send_data @current_measurements.to_csv, filename: "current_measurements-#{Date.today}.csv" }
     end
   end
 
