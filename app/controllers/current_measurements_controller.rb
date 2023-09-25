@@ -13,6 +13,18 @@ class CurrentMeasurementsController < ApplicationController
 
   def create
     @current_measurement = CurrentMeasurement.new(measurement_params)
+
+    # Ermitteln des Stadtnamens basierend auf der IP-Adresse
+    city_name = IPLocationService.get_city_name(request.remote_ip)
+
+    # Überprüfen, ob ein Stadtname zurückgegeben wurde
+    if city_name
+      @current_measurement.location_based_on_ip = city_name
+    else
+      # Optional: Behandlung, wenn kein Stadtname gefunden wurde
+      # Zum Beispiel: Setzen eines Standardwertes oder Protokollieren eines Fehlers
+    end
+
     if @current_measurement.save
       render json: { status: 'success' }
     else
