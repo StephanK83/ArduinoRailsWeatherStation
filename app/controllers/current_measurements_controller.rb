@@ -14,6 +14,15 @@ class CurrentMeasurementsController < ApplicationController
     end
   end
 
+  def index
+    @current_measurements = CurrentMeasurement.all
+
+    respond_to do |format|
+      format.html # standardmäßig, zeigt die HTML-View
+      format.csv { send_data @current_measurements.to_csv, filename: "current_measurements-#{Date.today}.csv" }
+    end
+  end
+
   private
 
   def measurement_params
