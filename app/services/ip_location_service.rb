@@ -1,7 +1,7 @@
 require 'net/http'
 require 'json'
 
-class IPLocationService
+class IpLocationService
 
   def self.get_city_name(ip)
     api_key = ENV['IP2LOCATION_API_KEY']
