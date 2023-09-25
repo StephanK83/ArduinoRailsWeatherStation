@@ -15,7 +15,7 @@ class CurrentMeasurementsController < ApplicationController
     @current_measurement = CurrentMeasurement.new(measurement_params)
 
     # Ermitteln des Stadtnamens basierend auf der IP-Adresse
-    city_name = IPLocationService.get_city_name(request.remote_ip)
+    city_name = IpLocationService.get_city_name(request.remote_ip)
 
     # Überprüfen, ob ein Stadtname zurückgegeben wurde
     if city_name
