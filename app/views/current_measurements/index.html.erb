@@ -36,7 +36,7 @@
       data-timestamps='<%= @timestamps.map { |t| t.strftime('%H:%M') }.to_json.html_safe %>'>
     </canvas>
   </div>
-</div>
+  </div>
 <script type="text/javascript">
     document.addEventListener("DOMContentLoaded", () => {
         const ctx = document.getElementById('temperatureChart').getContext('2d');
