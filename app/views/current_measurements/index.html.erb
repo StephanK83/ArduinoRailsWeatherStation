@@ -32,8 +32,8 @@
     <canvas id="temperatureChart"
         width="400"
         height="200"
-        data-temperatures="<%= @temperatures.to_json.html_safe %>"
-        data-timestamps="<%= @timestamps.map { |t| t.strftime('%H:%M') }.to_json.html_safe %>">
+        data-temperatures='<%= @temperatures.to_json.html_safe %>'
+        data-timestamps='<%= @timestamps.map { |t| t.strftime('%H:%M') }.to_json.html_safe %>'>
     </canvas>
   </div>
 </div>
