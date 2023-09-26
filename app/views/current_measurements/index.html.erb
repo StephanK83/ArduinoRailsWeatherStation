@@ -1,43 +1,44 @@
-<div class="row">
-  <div class="col-md-6">
-    <h1>Current Measurements</h1>
-    <%= will_paginate @current_measurements %>
-    <table border="1">
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Timestamp</th>
-        <th>Temperature</th>
-        <th>Humidity</th>
-        <th>Pressure</th>
-        <th>Location based on IP</th>
-      </tr>
-    </thead>
-      <tbody>
-        <% @current_measurements.each do |measurement| %>
-          <tr>
-            <td><%= measurement.id %></td>
-            <td><%= measurement.created_at.strftime('%Y-%m-%d %H:%M:%S') %></td>
-            <td><%= measurement.temperature %></td>
-            <td><%= measurement.humidity %></td>
-            <td><%= measurement.pressure %></td>
-            <td><%= measurement.location_based_on_ip %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-    <%= will_paginate @current_measurements %>
-  </div>
-  <div class="col-md-6">
-    <canvas id="temperatureChart"
-        width="400"
-        height="200"
-        data-temperatures='<%= @temperatures.to_json.html_safe %>'
-        data-timestamps='<%= @timestamps.map { |t| t.strftime('%H:%M') }.to_json.html_safe %>'>
-    </canvas>
+<div class="page_content">
+  <div class="table_container", style="width: 40%; float: left; box-sizing: border-box;">
+    <div class="col-md-6">
+      <h1>Current Measurements</h1>
+      <%= will_paginate @current_measurements %>
+      <table border="1">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Timestamp</th>
+          <th>Temperature</th>
+          <th>Humidity</th>
+          <th>Pressure</th>
+          <th>Location based on IP</th>
+        </tr>
+      </thead>
+        <tbody>
+          <% @current_measurements.each do |measurement| %>
+            <tr>
+              <td><%= measurement.id %></td>
+              <td><%= measurement.created_at.strftime('%Y-%m-%d %H:%M:%S') %></td>
+              <td><%= measurement.temperature %></td>
+              <td><%= measurement.humidity %></td>
+              <td><%= measurement.pressure %></td>
+              <td><%= measurement.location_based_on_ip %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <%= will_paginate @current_measurements %>
+    </div>
+    <div class="chart_container", style="width: 40%; float: left; box-sizing: border-box;">
+      <canvas id="temperatureChart"
+          width="100%"
+          height="200"
+          data-temperatures='<%= @temperatures.to_json.html_safe %>'
+          data-timestamps='<%= @timestamps.map { |t| t.strftime('%H:%M') }.to_json.html_safe %>'>
+      </canvas>
+    </div>
   </div>
 </div>
-
 <script type="text/javascript">
     document.addEventListener("DOMContentLoaded", () => {
         const ctx = document.getElementById('temperatureChart').getContext('2d');
