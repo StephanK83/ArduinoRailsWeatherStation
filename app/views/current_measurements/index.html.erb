@@ -26,6 +26,7 @@
         <% end %>
       </tbody>
     </table>
+    <%= will_paginate @current_measurements %>
   </div>
   <div class="col-md-6">
     <canvas id="temperatureChart" width="400" height="200"></canvas>
