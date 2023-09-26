@@ -1,12 +1,16 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const ctx = document.getElementById('temperatureChart').getContext('2d');
-  const temperatureChart = new Chart(ctx, {
+  const chartElement = document.getElementById('temperatureChart');
+  const temperatures = JSON.parse(chartElement.dataset.temperatures);
+  const timestamps = JSON.parse(chartElement.dataset.timestamps);
+
+  const ctx = chartElement.getContext('2d');
+  const temperatureChart = new ChartJS.Chart(ctx, {
       type: 'line',
       data: {
-          labels: <%= @timestamps.map { |t| t.strftime('%H:%M') }.to_json.html_safe %>,
+          labels: timestamps,
           datasets: [{
               label: 'Temperature',
-              data: <%= @temperatures.to_json.html_safe %>,
+              data: temperatures,
               borderColor: 'rgba(75, 192, 192, 1)',
               borderWidth: 2,
               fill: false

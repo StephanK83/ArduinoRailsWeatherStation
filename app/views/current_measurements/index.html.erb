@@ -1,7 +1,7 @@
-<%= will_paginate @current_measurements %>
 <div class="row">
   <div class="col-md-6">
     <h1>Current Measurements</h1>
+    <%= will_paginate @current_measurements %>
     <table border="1">
     <thead>
       <tr>
@@ -29,6 +29,11 @@
     <%= will_paginate @current_measurements %>
   </div>
   <div class="col-md-6">
-    <canvas id="temperatureChart" width="400" height="200"></canvas>
+    <canvas id="temperatureChart"
+        width="400"
+        height="200"
+        data-temperatures="<%= @temperatures.to_json.html_safe %>"
+        data-timestamps="<%= @timestamps.map { |t| t.strftime('%H:%M') }.to_json.html_safe %>">
+    </canvas>
   </div>
 </div>

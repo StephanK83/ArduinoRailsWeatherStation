@@ -234,7 +234,7 @@ DEPENDENCIES
   jbuilder
   pg
   puma (~> 5.0)
-  rails (~> 7.0.5)
+  rails
   selenium-webdriver
   sprockets-rails
   sqlite3 (~> 1.4)
@@ -243,7 +243,7 @@ DEPENDENCIES
   tzinfo-data
   web-console
   webdrivers
-  will_paginate (~> 3.3)
+  will_paginate
 
 RUBY VERSION
    ruby 3.1.2p20

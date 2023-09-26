@@ -4,7 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby "3.1.2"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem "rails", "~> 7.0.5"
+gem "rails"
 
 # postgres
 gem "pg"
@@ -16,7 +16,7 @@ gem 'dotenv-rails', groups: [:development, :test]
 gem 'chartjs-rails'
 
 # to have the data viewed in tables
-gem 'will_paginate', '~> 3.3'
+gem 'will_paginate'
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
