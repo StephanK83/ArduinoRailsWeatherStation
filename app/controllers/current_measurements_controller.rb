@@ -10,6 +10,8 @@ class CurrentMeasurementsController < ApplicationController
       end
     end
     @current_measurements = CurrentMeasurement.order(created_at: :desc).paginate(page: params[:page], per_page: 10)
+    @temperatures = CurrentMeasurement.where("created_at >= ?", Date.today.beginning_of_day).order(:created_at).pluck(:temperature)
+    @timestamps = CurrentMeasurement.where("created_at >= ?", Date.today.beginning_of_day).order(:created_at).pluck(:created_at)
   end
 
   def create
