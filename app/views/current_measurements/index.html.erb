@@ -1,12 +1,28 @@
 <h1>Current Measurements</h1>
-<ul>
-  <% @current_measurements.each do |measurement| %>
-    <li>
-      Timestamp: <%= measurement.created_at.strftime('%Y-%m-%d %H:%M:%S') %><br>
-      Temperature: <%= measurement.temperature %>,
-      Humidity: <%= measurement.humidity %>,
-      Pressure: <%= measurement.pressure %>,
-      Location based on IP: <%= measurement.location_based_on_ip %>
-    </li>
-  <% end %>
-</ul>
+
+<table border="1">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Timestamp</th>
+      <th>Temperature</th>
+      <th>Humidity</th>
+      <th>Pressure</th>
+      <th>Location based on IP</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @current_measurements.each do |measurement| %>
+      <tr>
+        <td><%= measurement.id %></td>
+        <td><%= measurement.created_at.strftime('%Y-%m-%d %H:%M:%S') %></td>
+        <td><%= measurement.temperature %></td>
+        <td><%= measurement.humidity %></td>
+        <td><%= measurement.pressure %></td>
+        <td><%= measurement.location_based_on_ip %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= will_paginate @current_measurements %>
