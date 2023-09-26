@@ -1,6 +1,6 @@
-<div class="page_content", style="align: center; margin: 20px;">
+<div class="page_content">
   <!-- important note: css inline styles are just for testing pruposes. I know, that it's not best practice to have them permanently there. Will put them to a central scss soon.> -->
-  <div class="table_container", style="width: 40%; float: left; box-sizing: border-box;">
+  <div class="table_container">
     <h1>Messdaten</h1>
       <%= will_paginate @current_measurements %>
       <table border="1">
@@ -28,7 +28,7 @@
       </table>
       <%= will_paginate @current_measurements %>
   </div>
-   <div class="chart_container", style="width: 40%; float: left; box-sizing: border-box;">
+   <div class="chart_container">
     <h2>Tagestemperatur</h2>
     <canvas id="temperatureChart"
       width="95%"
@@ -123,3 +123,27 @@ document.addEventListener("DOMContentLoaded", () => {
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js">
 </script>
+
+<style>
+  .page_content {
+    display: flex;
+    justify-content: space-between; /* Gibt etwas Abstand zwischen den Elementen */
+    margin: 20px;
+  }
+
+  .table_container, .chart_container {
+    width: 48%; /* Ein bisschen weniger als 50% um Platz zwischen den Containern zu haben */
+    box-sizing: border-box;
+  }
+
+  /* Responsive Design für kleinere Bildschirme */
+  @media screen and (max-width: 768px) {
+    .page_content {
+      flex-direction: column;
+    }
+
+    .table_container, .chart_container {
+      width: 100%;
+    }
+  }
+</style>
