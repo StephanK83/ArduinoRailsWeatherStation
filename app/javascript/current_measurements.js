@@ -1,3 +1,4 @@
+console.log("Current_measurements.js loaded!");
 document.addEventListener("DOMContentLoaded", () => {
   const chartElement = document.getElementById('temperatureChart');
   const temperatures = JSON.parse(chartElement.dataset.temperatures);
