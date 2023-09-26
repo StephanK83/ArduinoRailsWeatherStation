@@ -11,7 +11,7 @@ module ArduinoWeatherStation
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
     config.autoloader = :classic
-
+    config.time_zone = 'Berlin'  # für Mitteleuropäische Zeit (MEZ)
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files
