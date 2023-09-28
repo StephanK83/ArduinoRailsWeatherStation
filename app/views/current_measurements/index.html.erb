@@ -58,34 +58,64 @@
       </canvas>
     </div>
   </div>
+  <div class="third_row">
+    <div class="chart_container">
+      <h2>Tagesfeuchtigkeit</h2>
+      <canvas id="humidityChart"
+        width="95%"
+        height="50"
+        data-humidities='<%= @humidities.to_json.html_safe %>'
+        data-timestamps='<%= @timestamps.map { |t| t.strftime('%H:%M') }.to_json.html_safe %>'>
+      </canvas>
+    </div>
+    <div class="chart_container">
+      <h2>Wochendurchschnittsfeuchtigkeit</h2>
+      <canvas id="humidityChartWeek"
+        width="95%"
+        height="50"
+        data-humidities='<%= @humidities_week.to_json.html_safe %>'
+        data-timestamps='<%= @timestamps_week.map { |t| t.strftime('%a %H:%M') }.to_json.html_safe %>'>
+      </canvas>
+    </div>
+  <div class="fourth_row">
+    <div class="chart_container">
+      <h2>Gesamter Feuchtigkeitsverlauf seit Aufzeichnungsbeginn</h2>
+      <canvas id="humidityChartAll"
+        width="95%"
+        height="50"
+        data-humidities='<%= @humidities_all.to_json.html_safe %>'
+        data-timestamps='<%= @timestamps_all.map { |t| t.strftime('%Y-%m-%d') }.to_json.html_safe %>'>
+      </canvas>
+    </div>
+  </div>
 </div>
 
 <script type="text/javascript">
-document.addEventListener("DOMContentLoaded", () => {
-  // Code für das erste Diagramm (Tägliche Temperatur)
-  const ctx = document.getElementById('temperatureChart').getContext('2d');
-  const temperatures = JSON.parse(document.getElementById('temperatureChart').getAttribute('data-temperatures'));
-  const timestamps = JSON.parse(document.getElementById('temperatureChart').getAttribute('data-timestamps'));
-  new Chart(ctx, {
-      type: 'line',
-      data: {
-          labels: timestamps,
-          datasets: [{
-              label: 'Daily Temperature',
-              data: temperatures,
-              borderColor: 'rgba(75, 192, 192, 1)',
-              borderWidth: 2,
-              fill: false
-          }]
-      },
-      options: {
-          scales: {
-              y: {
-                  beginAtZero: true
-              }
-          }
-      }
-  });
+  document.addEventListener("DOMContentLoaded", () => {
+    // Code für das erste Diagramm (Tägliche Temperatur)
+    const ctx = document.getElementById('temperatureChart').getContext('2d');
+    const temperatures = JSON.parse(document.getElementById('temperatureChart').getAttribute('data-temperatures'));
+    const timestamps = JSON.parse(document.getElementById('temperatureChart').getAttribute('data-timestamps'));
+    new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: timestamps,
+            datasets: [{
+                label: 'Daily Temperature',
+                data: temperatures,
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 2,
+                fill: false
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
 
   // Code für das zweite Diagramm (Wöchentliche Temperatur)
   const ctxWeek = document.getElementById('temperatureChartWeek').getContext('2d');
@@ -123,6 +153,56 @@ document.addEventListener("DOMContentLoaded", () => {
       }
   });
 
+  // Code für das erste Feuchtigkeitsdiagramm (Tägliche Feuchtigkeit)
+  const ctxHumidity = document.getElementById('humidityChart').getContext('2d');
+  const humidities = JSON.parse(document.getElementById('humidityChart').getAttribute('data-humidities'));
+  new Chart(ctxHumidity, {
+      type: 'line',
+      data: {
+          labels: timestamps, // bereits vorhanden
+          datasets: [{
+              label: 'Daily Humidity',
+              data: humidities,
+              borderColor: 'rgba(255, 159, 64, 1)',
+              borderWidth: 2,
+              fill: false
+          }]
+      }
+  });
+
+  // Code für das zweite Feuchtigkeitsdiagramm (Wöchentliche Feuchtigkeit)
+  const ctxHumidityWeek = document.getElementById('humidityChartWeek').getContext('2d');
+  const humiditiesWeek = JSON.parse(document.getElementById('humidityChartWeek').getAttribute('data-humidities'));
+  new Chart(ctxHumidityWeek, {
+      type: 'line',
+      data: {
+          labels: timestampsWeek, // bereits vorhanden
+          datasets: [{
+              label: 'Weekly Humidity',
+              data: humiditiesWeek,
+              borderColor: 'rgba(54, 162, 235, 1)',
+              borderWidth: 2,
+              fill: false
+          }]
+      }
+  });
+
+  // Code für das dritte Feuchtigkeitsdiagramm (Gesamtfeuchtigkeit)
+  const ctxHumidityAll = document.getElementById('humidityChartAll').getContext('2d');
+  const humiditiesAll = JSON.parse(document.getElementById('humidityChartAll').getAttribute('data-humidities'));
+  new Chart(ctxHumidityAll, {
+      type: 'line',
+      data: {
+          labels: timestampsAll, // bereits vorhanden
+          datasets: [{
+              label: 'All Time Humidity',
+              data: humiditiesAll,
+              borderColor: 'rgba(255, 206, 86, 1)',
+              borderWidth: 2,
+              fill: false
+          }]
+      }
+  });
 });
 </script>
 
