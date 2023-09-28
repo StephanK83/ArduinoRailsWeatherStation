@@ -14,6 +14,7 @@ class CurrentMeasurementsController < ApplicationController
     @timestamps = CurrentMeasurement.where("created_at >= ?", Date.today.beginning_of_day).order(:created_at).pluck(:created_at)
     @temperatures_week = []
     @timestamps_week = []
+    @humidities_week = []
     (1..7).each do |day_ago|
       day = Date.today - day_ago.days
       %w[06:00 12:00 20:00 24:00].each do |time|
@@ -23,6 +24,7 @@ class CurrentMeasurementsController < ApplicationController
                                               .first
         if closest_measurement
           @temperatures_week << closest_measurement.temperature
+          @humidities_week << closest_measurement.humidity
           @timestamps_week << closest_measurement.created_at
         end
       end
@@ -30,6 +32,8 @@ class CurrentMeasurementsController < ApplicationController
     # Daten für das Gesamtdiagramm
     @temperatures_all = CurrentMeasurement.order(:created_at).pluck(:temperature)
     @timestamps_all = CurrentMeasurement.order(:created_at).pluck(:created_at)
+    @humidities = CurrentMeasurement.where("created_at >= ?", Date.today.beginning_of_day).order(:created_at).pluck(:humidity)
+    @humidities_all = CurrentMeasurement.order(:created_at).pluck(:humidity)
   end
 
   def create
