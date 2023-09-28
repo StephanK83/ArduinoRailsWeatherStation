@@ -30,7 +30,6 @@
         <%= will_paginate @current_measurements %>
     </div>
     <div class="chart_container">
-      <h2>Tagestemperatur</h2>
       <canvas id="temperatureChart"
         width="95%"
         height="50"
@@ -41,15 +40,12 @@
   </div>
   <div class="second_row">
     <div class="chart_container">
-      <h2>Wochendurchschnittstemperatur</h2>
       <canvas id="temperatureChartWeek"
         width="95%"
         height="50"
         data-temperatures='<%= @temperatures_week.to_json.html_safe %>'
         data-timestamps='<%= @timestamps_week.map { |t| t.strftime('%a %H:%M') }.to_json.html_safe %>'>
       </canvas>
-
-      <h2>Gesamter Temperaturverlauf seit Aufzeichnungsbeginn</h2>
       <canvas id="temperatureChartAll"
         width="95%"
         height="50"
@@ -60,7 +56,6 @@
   </div>
   <div class="third_row">
     <div class="chart_container">
-      <h2>Tagesfeuchtigkeit</h2>
       <canvas id="humidityChart"
         width="95%"
         height="50"
@@ -69,7 +64,6 @@
       </canvas>
     </div>
     <div class="chart_container">
-      <h2>Wochendurchschnittsfeuchtigkeit</h2>
       <canvas id="humidityChartWeek"
         width="95%"
         height="50"
@@ -79,7 +73,6 @@
     </div>
   <div class="fourth_row">
     <div class="chart_container">
-      <h2>Gesamter Feuchtigkeitsverlauf seit Aufzeichnungsbeginn</h2>
       <canvas id="humidityChartAll"
         width="95%"
         height="50"
@@ -101,7 +94,7 @@
         data: {
             labels: timestamps,
             datasets: [{
-                label: 'Daily Temperature',
+                label: 'Tagestemperatur',
                 data: temperatures,
                 borderColor: 'rgba(75, 192, 192, 1)',
                 borderWidth: 2,
@@ -126,7 +119,7 @@
       data: {
           labels: timestampsWeek,
           datasets: [{
-              label: 'Weekly Temperature',
+              label: 'Wochendurchschnitt Temperatur',
               data: temperaturesWeek,
               borderColor: 'rgba(255, 99, 132, 1)',
               borderWidth: 2,
@@ -144,7 +137,7 @@
       data: {
           labels: timestampsAll,
           datasets: [{
-              label: 'All Time Temperature',
+              label: 'Allzeittemperatur',
               data: temperaturesAll,
               borderColor: 'rgba(153, 102, 255, 1)',
               borderWidth: 2,
@@ -161,7 +154,7 @@
       data: {
           labels: timestamps, // bereits vorhanden
           datasets: [{
-              label: 'Daily Humidity',
+              label: 'Luftfeuchtigkeit Tagesverlauf',
               data: humidities,
               borderColor: 'rgba(255, 159, 64, 1)',
               borderWidth: 2,
@@ -178,7 +171,7 @@
       data: {
           labels: timestampsWeek, // bereits vorhanden
           datasets: [{
-              label: 'Weekly Humidity',
+              label: 'Wochendurchschnitt Luftfeuchtigkeit',
               data: humiditiesWeek,
               borderColor: 'rgba(54, 162, 235, 1)',
               borderWidth: 2,
@@ -195,7 +188,7 @@
       data: {
           labels: timestampsAll, // bereits vorhanden
           datasets: [{
-              label: 'All Time Humidity',
+              label: 'Allzeitluftfeuchtigkeit',
               data: humiditiesAll,
               borderColor: 'rgba(255, 206, 86, 1)',
               borderWidth: 2,
