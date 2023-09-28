@@ -1,57 +1,62 @@
 <div class="page_content">
   <!-- important note: css inline styles are just for testing pruposes. I know, that it's not best practice to have them permanently there. Will put them to a central scss soon.> -->
-  <div class="table_container">
-    <h1>Messdaten</h1>
-      <%= will_paginate @current_measurements %>
-      <table border="1">
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Zeit</th>
-          <th>Temperatur</th>
-          <th>Feuchtigkeit</th>
-          <th>IP-basierter Standort</th>
-        </tr>
-      </thead>
-        <tbody>
-          <% @current_measurements.each do |measurement| %>
-            <tr>
-              <td><%= measurement.id %></td>
-              <td><%= measurement.created_at.strftime('%Y-%m-%d %H:%M:%S') %></td>
-              <td><%= measurement.temperature %></td>
-              <td><%= measurement.humidity %></td>
-              <td><%= measurement.pressure %></td>
-              <td><%= measurement.location_based_on_ip %></td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-      <%= will_paginate @current_measurements %>
+  <div class="first_row">
+    <div class="table_container">
+      <h1 class="h1">Messdaten</h1>
+        <%= will_paginate @current_measurements %>
+        <table border="1">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Zeit</th>
+            <th>Temperatur</th>
+            <th>Feuchtigkeit</th>
+            <th>IP-basierter Standort</th>
+          </tr>
+        </thead>
+          <tbody>
+            <% @current_measurements.each do |measurement| %>
+              <tr>
+                <td><%= measurement.id %></td>
+                <td><%= measurement.created_at.strftime('%Y-%m-%d %H:%M:%S') %></td>
+                <td><%= measurement.temperature %></td>
+                <td><%= measurement.humidity %></td>
+                <td><%= measurement.pressure %></td>
+                <td><%= measurement.location_based_on_ip %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+        <%= will_paginate @current_measurements %>
+    </div>
+    <div class="chart_container">
+      <h2>Tagestemperatur</h2>
+      <canvas id="temperatureChart"
+        width="95%"
+        height="50"
+        data-temperatures='<%= @temperatures.to_json.html_safe %>'
+        data-timestamps='<%= @timestamps.map { |t| t.strftime('%H:%M') }.to_json.html_safe %>'>
+      </canvas>
+    </div>
   </div>
-   <div class="chart_container">
-    <h2>Tagestemperatur</h2>
-    <canvas id="temperatureChart"
-      width="95%"
-      height="50"
-      data-temperatures='<%= @temperatures.to_json.html_safe %>'
-      data-timestamps='<%= @timestamps.map { |t| t.strftime('%H:%M') }.to_json.html_safe %>'>
-    </canvas>
+  <div class="second_row">
+    <div class="chart_container">
+      <h2>Wochendurchschnittstemperatur</h2>
+      <canvas id="temperatureChartWeek"
+        width="95%"
+        height="50"
+        data-temperatures='<%= @temperatures_week.to_json.html_safe %>'
+        data-timestamps='<%= @timestamps_week.map { |t| t.strftime('%a %H:%M') }.to_json.html_safe %>'>
+      </canvas>
 
-    <h2>Wochendurchschnittstemperatur</h2>
-    <canvas id="temperatureChartWeek"
-      width="95%"
-      height="50"
-      data-temperatures='<%= @temperatures_week.to_json.html_safe %>'
-      data-timestamps='<%= @timestamps_week.map { |t| t.strftime('%a %H:%M') }.to_json.html_safe %>'>
-    </canvas>
-
-    <h2>Gesamter Temperaturverlauf seit Aufzeichnungsbeginn</h2>
-    <canvas id="temperatureChartAll"
-      width="95%"
-      height="50"
-      data-temperatures='<%= @temperatures_all.to_json.html_safe %>'
-      data-timestamps='<%= @timestamps_all.map { |t| t.strftime('%Y-%m-%d') }.to_json.html_safe %>'>
-    </canvas>
+      <h2>Gesamter Temperaturverlauf seit Aufzeichnungsbeginn</h2>
+      <canvas id="temperatureChartAll"
+        width="95%"
+        height="50"
+        data-temperatures='<%= @temperatures_all.to_json.html_safe %>'
+        data-timestamps='<%= @timestamps_all.map { |t| t.strftime('%Y-%m-%d') }.to_json.html_safe %>'>
+      </canvas>
+    </div>
   </div>
 </div>
 
@@ -136,7 +141,6 @@ document.addEventListener("DOMContentLoaded", () => {
     box-sizing: border-box;
   }
 
-  /* Responsive Design für kleinere Bildschirme */
   @media screen and (max-width: 768px) {
     .page_content {
       flex-direction: column;
@@ -145,5 +149,9 @@ document.addEventListener("DOMContentLoaded", () => {
     .table_container, .chart_container {
       width: 100%;
     }
+  }
+
+  .h1 {
+    font-family: poppins-black;
   }
 </style>
