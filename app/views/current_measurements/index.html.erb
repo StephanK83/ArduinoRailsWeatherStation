@@ -193,12 +193,14 @@
   .page_content {
     display: flex;
     justify-content: space-between; /* Gibt etwas Abstand zwischen den Elementen */
+    flex-wrap: wrap;
     margin: 20px;
   }
 
   .table_container, .chart_container {
     width: auto; /* Ein bisschen weniger als 50% um Platz zwischen den Containern zu haben */
     height: auto;
+    max-width: 45%;
     box-sizing: border-box;
   }
 
