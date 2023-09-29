@@ -30,8 +30,6 @@
     </div>
     <div class="chart_container">
       <canvas id="temperatureChart"
-        width="95%"
-        height="50"
         data-temperatures='<%= @temperatures.to_json.html_safe %>'
         data-timestamps='<%= @timestamps.map { |t| t.strftime('%H:%M') }.to_json.html_safe %>'>
       </canvas>
@@ -40,14 +38,10 @@
   <div class="second_row">
     <div class="chart_container">
       <canvas id="temperatureChartWeek"
-        width="95%"
-        height="50"
         data-temperatures='<%= @temperatures_week.to_json.html_safe %>'
         data-timestamps='<%= @timestamps_week.map { |t| t.strftime('%a %H:%M') }.to_json.html_safe %>'>
       </canvas>
       <canvas id="temperatureChartAll"
-        width="95%"
-        height="50"
         data-temperatures='<%= @temperatures_all.to_json.html_safe %>'
         data-timestamps='<%= @timestamps_all.map { |t| t.strftime('%Y-%m-%d') }.to_json.html_safe %>'>
       </canvas>
@@ -56,16 +50,12 @@
   <div class="third_row">
     <div class="chart_container">
       <canvas id="humidityChart"
-        width="95%"
-        height="50"
         data-humidities='<%= @humidities.to_json.html_safe %>'
         data-timestamps='<%= @timestamps.map { |t| t.strftime('%H:%M') }.to_json.html_safe %>'>
       </canvas>
     </div>
     <div class="chart_container">
       <canvas id="humidityChartWeek"
-        width="95%"
-        height="50"
         data-humidities='<%= @humidities_week.to_json.html_safe %>'
         data-timestamps='<%= @timestamps_week.map { |t| t.strftime('%a %H:%M') }.to_json.html_safe %>'>
       </canvas>
@@ -73,8 +63,6 @@
   <div class="fourth_row">
     <div class="chart_container">
       <canvas id="humidityChartAll"
-        width="95%"
-        height="50"
         data-humidities='<%= @humidities_all.to_json.html_safe %>'
         data-timestamps='<%= @timestamps_all.map { |t| t.strftime('%Y-%m-%d') }.to_json.html_safe %>'>
       </canvas>
@@ -209,7 +197,8 @@
   }
 
   .table_container, .chart_container {
-    width: 48%; /* Ein bisschen weniger als 50% um Platz zwischen den Containern zu haben */
+    width: 95%; /* Ein bisschen weniger als 50% um Platz zwischen den Containern zu haben */
+    height: auto;
     box-sizing: border-box;
   }
 
@@ -223,7 +212,7 @@
     }
   }
 
-  .h1s {
+  .h1 {
     font-family: poppins-black;
   }
 </style>
