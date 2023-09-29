@@ -1,72 +1,65 @@
 <div class="page_content">
   <!-- important note: css inline styles are just for testing pruposes. I know, that it's not best practice to have them permanently there. Will put them to a central scss soon. -->
-  <div class="first_row">
-    <div class="table_container">
-      <h1 class="h1">Messdaten</h1>
-        <%= will_paginate @current_measurements %>
-        <table border="1">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Zeit</th>
-            <th>Temperatur</th>
-            <th>Feuchtigkeit</th>
-            <th>IP-basierter Standort</th>
-          </tr>
-        </thead>
-          <tbody>
-            <% @current_measurements.each do |measurement| %>
-              <tr>
-                <td><%= measurement.id %></td>
-                <td><%= measurement.created_at.strftime('%Y-%m-%d %H:%M:%S') %></td>
-                <td><%= measurement.temperature %></td>
-                <td><%= measurement.humidity %></td>
-                <td><%= measurement.location_based_on_ip %></td>
-              </tr>
-            <% end %>
-          </tbody>
-        </table>
-        <%= will_paginate @current_measurements %>
-    </div>
-    <div class="chart_container">
-      <canvas id="temperatureChart"
-        data-temperatures='<%= @temperatures.to_json.html_safe %>'
-        data-timestamps='<%= @timestamps.map { |t| t.strftime('%H:%M') }.to_json.html_safe %>'>
-      </canvas>
-    </div>
+  <div class="table_container">
+    <h1 class="h1">Messdaten</h1>
+      <%= will_paginate @current_measurements %>
+      <table border="1">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Zeit</th>
+          <th>Temperatur</th>
+          <th>Feuchtigkeit</th>
+          <th>IP-basierter Standort</th>
+        </tr>
+      </thead>
+        <tbody>
+          <% @current_measurements.each do |measurement| %>
+            <tr>
+              <td><%= measurement.id %></td>
+              <td><%= measurement.created_at.strftime('%Y-%m-%d %H:%M:%S') %></td>
+              <td><%= measurement.temperature %></td>
+              <td><%= measurement.humidity %></td>
+              <td><%= measurement.location_based_on_ip %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <%= will_paginate @current_measurements %>
+  <div class="chart_container">
+    <canvas id="temperatureChart"
+      data-temperatures='<%= @temperatures.to_json.html_safe %>'
+      data-timestamps='<%= @timestamps.map { |t| t.strftime('%H:%M') }.to_json.html_safe %>'>
+    </canvas>
   </div>
-  <div class="second_row">
-    <div class="chart_container">
-      <canvas id="temperatureChartWeek"
-        data-temperatures='<%= @temperatures_week.to_json.html_safe %>'
-        data-timestamps='<%= @timestamps_week.map { |t| t.strftime('%a %H:%M') }.to_json.html_safe %>'>
-      </canvas>
-      <canvas id="temperatureChartAll"
-        data-temperatures='<%= @temperatures_all.to_json.html_safe %>'
-        data-timestamps='<%= @timestamps_all.map { |t| t.strftime('%Y-%m-%d') }.to_json.html_safe %>'>
-      </canvas>
-    </div>
+</div>
+  <div class="chart_container">
+    <canvas id="temperatureChartWeek"
+      data-temperatures='<%= @temperatures_week.to_json.html_safe %>'
+      data-timestamps='<%= @timestamps_week.map { |t| t.strftime('%a %H:%M') }.to_json.html_safe %>'>
+    </canvas>
+    <canvas id="temperatureChartAll"
+      data-temperatures='<%= @temperatures_all.to_json.html_safe %>'
+      data-timestamps='<%= @timestamps_all.map { |t| t.strftime('%Y-%m-%d') }.to_json.html_safe %>'>
+    </canvas>
   </div>
-  <div class="third_row">
-    <div class="chart_container">
-      <canvas id="humidityChart"
-        data-humidities='<%= @humidities.to_json.html_safe %>'
-        data-timestamps='<%= @timestamps.map { |t| t.strftime('%H:%M') }.to_json.html_safe %>'>
-      </canvas>
-    </div>
-    <div class="chart_container">
-      <canvas id="humidityChartWeek"
-        data-humidities='<%= @humidities_week.to_json.html_safe %>'
-        data-timestamps='<%= @timestamps_week.map { |t| t.strftime('%a %H:%M') }.to_json.html_safe %>'>
-      </canvas>
-    </div>
-  <div class="fourth_row">
-    <div class="chart_container">
-      <canvas id="humidityChartAll"
-        data-humidities='<%= @humidities_all.to_json.html_safe %>'
-        data-timestamps='<%= @timestamps_all.map { |t| t.strftime('%Y-%m-%d') }.to_json.html_safe %>'>
-      </canvas>
-    </div>
+  <div class="chart_container">
+    <canvas id="humidityChart"
+      data-humidities='<%= @humidities.to_json.html_safe %>'
+      data-timestamps='<%= @timestamps.map { |t| t.strftime('%H:%M') }.to_json.html_safe %>'>
+    </canvas>
+  </div>
+  <div class="chart_container">
+    <canvas id="humidityChartWeek"
+      data-humidities='<%= @humidities_week.to_json.html_safe %>'
+      data-timestamps='<%= @timestamps_week.map { |t| t.strftime('%a %H:%M') }.to_json.html_safe %>'>
+    </canvas>
+  </div>
+  <div class="chart_container">
+    <canvas id="humidityChartAll"
+      data-humidities='<%= @humidities_all.to_json.html_safe %>'
+      data-timestamps='<%= @timestamps_all.map { |t| t.strftime('%Y-%m-%d') }.to_json.html_safe %>'>
+    </canvas>
   </div>
 </div>
 
@@ -192,25 +185,21 @@
 <style>
   .page_content {
     display: flex;
-    justify-content: space-between; /* Gibt etwas Abstand zwischen den Elementen */
-    flex-wrap: wrap;
-    margin: 20px;
+    flex-direction: column;
+    align-items: center;
   }
 
   .table_container, .chart_container {
-    width: auto; /* Ein bisschen weniger als 50% um Platz zwischen den Containern zu haben */
-    height: 300px;
-    max-width: 95%;
+    width: 100%; /* Nutzt die volle Breite */
     box-sizing: border-box;
+    margin: 10px 20px; /* 10px vertikal, 20px horizontal */
   }
 
+  /* Der Media Query bleibt unverändert, da er weiterhin für kleinere Bildschirme relevant ist. */
   @media screen and (max-width: 768px) {
-    .page_content {
-      flex-direction: column;
-    }
-
     .table_container, .chart_container {
       width: 100%;
+      margin: 10px 0; /* Passt den horizontalen Rand für kleinere Bildschirme an */
     }
   }
 
