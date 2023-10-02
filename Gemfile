@@ -2,12 +2,16 @@ source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "3.1.2"
+gem 'sass-rails'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails"
 
 # postgres
 gem "pg"
+
+#fontawesom
+gem 'font-awesome-rails'
 
 # for secret data
 gem 'dotenv-rails', groups: [:development, :test]

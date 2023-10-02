@@ -1,9 +1,8 @@
 <div class="page_content">
-  <!-- important note: css inline styles are just for testing pruposes. I know, that it's not best practice to have them permanently there. Will put them to a central scss soon. -->
   <div class="table_container">
-    <h1 class="h1">Messdaten</h1>
+    <h1>Messdaten</h1>
       <%= will_paginate @current_measurements %>
-      <table border="1">
+      <table border="3">
       <thead>
         <tr>
           <th>ID</th>
@@ -26,13 +25,13 @@
         </tbody>
       </table>
       <%= will_paginate @current_measurements %>
+  </div>
   <div class="chart_container">
     <canvas id="temperatureChart"
       data-temperatures='<%= @temperatures.to_json.html_safe %>'
       data-timestamps='<%= @timestamps.map { |t| t.strftime('%H:%M') }.to_json.html_safe %>'>
     </canvas>
   </div>
-</div>
   <div class="chart_container">
     <canvas id="temperatureChartWeek"
       data-temperatures='<%= @temperatures_week.to_json.html_safe %>'
@@ -62,8 +61,39 @@
     </canvas>
   </div>
 </div>
+<!--
+<script>
+  document.addEventListener("turbolinks:load", () => {
+    const canvas = document.getElementById('temperatureChart');
 
-<script type="text/javascript">
+    if (canvas) {
+      const temperatures = JSON.parse(canvas.dataset.temperatures);
+      const timestamps = JSON.parse(canvas.dataset.timestamps);
+
+      const ctx = canvas.getContext('2d');
+      new ChartJS.Chart(ctx, {
+          type: 'line',
+          data: {
+              labels: timestamps,
+              datasets: [{
+                  label: 'Temperature',
+                  data: temperatures,
+                  borderColor: 'rgba(75, 192, 192, 1)',
+                  borderWidth: 2,
+                  fill: false
+              }]
+          },
+          options: {
+              scales: {
+                  y: {
+                      beginAtZero: true
+                  }
+              }
+          }
+      });
+    }
+  });
+
   document.addEventListener("DOMContentLoaded", () => {
     // Code für das erste Diagramm (Tägliche Temperatur)
     const ctx = document.getElementById('temperatureChart').getContext('2d');
@@ -176,34 +206,6 @@
           }]
       }
   });
-});
+  });
 </script>
-
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js">
-</script>
-
-<style>
-  .page_content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .table_container, .chart_container {
-    width: 95%%; /* Nutzt die volle Breite */
-    box-sizing: border-box;
-    margin: 10px 20px; /* 10px vertikal, 20px horizontal */
-  }
-
-  /* Der Media Query bleibt unverändert, da er weiterhin für kleinere Bildschirme relevant ist. */
-  @media screen and (max-width: 768px) {
-    .table_container, .chart_container {
-      width: 95%;
-      margin: 10px 0; /* Passt den horizontalen Rand für kleinere Bildschirme an */
-    }
-  }
-
-  .h1 {
-    font-family: poppins-black;
-  }
-</style>
+-->

@@ -1,0 +1,67 @@
+.button_container_home {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.button_container_home a {
+  display: inline-block;
+  padding: 10px;
+  margin: 10px;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  transition: background-color 0.3s, transform 0.2s, border-color 0.3s;
+  text-decoration: none; /* Entfernt den Unterstrich des Links */
+}
+
+.button_container_home a:hover {
+  background-color: rgba(0, 0, 0, 0.1);  /* Sie können diese Farbe ändern, um das Highlight anzupassen */
+  transform: scale(1.05);                /* Beim Mouseover wird der Button etwas vergrößert */
+  border-color: #333;                   /* Rahmenfarbe beim Mouseover */
+}
+
+.button_container_home svg {
+  width: 100px; /* Sie können diese Größe ändern, um die SVGs größer oder kleiner zu machen */
+  height: 100px;
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+  transition: box-shadow 0.3s ease;
+}
+
+.tooltip:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #333;
+  color: #fff;
+  padding: 5px;
+  border-radius: 5px;
+  font-size: 12px;
+  z-index: 10;
+  white-space: nowrap; /* Stellt sicher, dass der Text nicht umgebrochen wird */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Standardzustand: Tooltip versteckt */
+.tooltip span {
+  visibility: hidden;
+  /* weitere Stile... */
+}
+
+/* Auf Desktops: Tooltip bei Hover anzeigen */
+.tooltip:hover span {
+  visibility: visible;
+  /* weitere Stile... */
+}
+
+/* Auf Bildschirmen mit einer Breite von weniger als 768px: Tooltip immer anzeigen */
+@media screen and (max-width: 767px) {
+  .tooltip span {
+      visibility: visible;
+  }
+}

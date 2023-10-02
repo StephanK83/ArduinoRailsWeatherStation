@@ -1,0 +1,29 @@
+<%= stylesheet_link_tag 'header', media: 'all' %>
+<header>
+  <div class="button_container">
+    <div class="dark_mode_button">
+      <button id="dark_mode_toggle"></button>
+    </div>
+  </div>
+  <div class="language_menu">
+    <h3>
+      <%= link_to "DE", url_for(locale: :de)%>
+      /
+      <%= link_to "EN", url_for(locale: :en) %>
+    </h3>
+  </div>
+  <div class="burger_menu">
+    <button id="burger_toggle">
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+    </button>
+    <div id="dropdown_menu" class="hidden", style="position: absolute;">
+      <%= link_to t('navigation.home'), root_path %>
+      <%= link_to t('navigation.measurement_data'), current_measurements_path %>
+      <%= link_to 'Arduino Code' %>
+      <%= link_to 'Arduino Setup' %>
+      <%= link_to t('navigation.contact') %>
+    </div>
+  </div>
+</header>

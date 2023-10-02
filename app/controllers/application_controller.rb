@@ -1,5 +1,11 @@
 require 'csv'
 
 class ApplicationController < ActionController::Base
-  # allgemeiner Code, der für alle Controller gilt
+  before_action :set_locale
+
+  private
+
+  def set_locale
+    I18n.locale = params[:locale] || I18n.default_locale
+  end
 end

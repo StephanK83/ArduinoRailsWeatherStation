@@ -30,4 +30,9 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  navigation:
+    home: home
+    measurement_data: measurement data
+    contact: contact
+  welcome_mesage: Welcome to our mobile weather station project
+  go_to: Go to
