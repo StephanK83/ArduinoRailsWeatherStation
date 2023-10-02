@@ -1,35 +1,12 @@
 console.log("Current_measurements.js loaded!");
 
 document.addEventListener("DOMContentLoaded", () => {
-    const temperatureChart = new ChartJS.Chart(ctx, {
-      type: 'line',
-      data: {
-          labels: timestamps,
-          datasets: [{
-              label: 'Temperature',
-              data: temperatures,
-              borderColor: 'rgba(75, 192, 192, 1)',
-              borderWidth: 2,
-              fill: false
-          }]
-      },
-      options: {
-          scales: {
-              y: {
-                  beginAtZero: true
-              }
-          }
-      }
-  });
-});
-
-document.addEventListener("DOMContentLoaded", () => {
 
     const initializeChart = (elementId, label, borderColor) => {
         const element = document.getElementById(elementId);
         if (element) {
             const ctx = element.getContext('2d');
-            const temperatures = JSON.parse(element.getAttribute('data-temperatures'));
+            const dataValues = JSON.parse(element.getAttribute('data-temperatures'));
             const timestamps = JSON.parse(element.getAttribute('data-timestamps'));
             new Chart(ctx, {
                 type: 'line',
@@ -37,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     labels: timestamps,
                     datasets: [{
                         label: label,
-                        data: temperatures,
+                        data: dataValues,
                         borderColor: borderColor,
                         borderWidth: 2,
                         fill: false
