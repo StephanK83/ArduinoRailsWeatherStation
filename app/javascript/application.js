@@ -1,7 +1,6 @@
 // import "@hotwired/turbo-rails"
 import "controllers"
-import "https://cdn.jsdelivr.net/npm/chart.js"
-import "https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"
+// import "https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"
 import "https://cdn.jsdelivr.net/npm/chart.js"
 // import "./current_measurements.js"
 
