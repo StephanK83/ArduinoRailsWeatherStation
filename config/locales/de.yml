@@ -2,6 +2,11 @@ de:
   navigation:
     home: Startseite
     measurement_data: Messdaten
-    contact: Kontakt
-  welcome_mesage: Willkommen bei unserem Wetterstationsprojekt
+    contact: Über
+  welcome_message: Willkommen bei unserem Wetterstationsprojekt
   go_to: Gehe zu
+  time: Zeit
+  temperature: Temperatur
+  humidity: Feuchtigkeit
+  ip_location: IP-basierter Standort
+  about: Dieses Projekt dient einerseits dem Aufbau einer kleinen und kostengünstigen Wetterstation, die sich jeder in sein Haus, Auto, Wohnmobil oder in den Garten stellen kann, entweder fertig kaufen oder mit minimalem Aufwand selbst bauen kann. Die Station sammelt diese Daten, stellt sie in Form von Diagrammen und Tabellen dar, ist sogar in der Lage, diese an eine Website zu senden, die man sich dann von unterwegs aus ansehen kann. In einer Variante dieser Wetterstation kann direkt mit ihr kommuniziert und die auf einer Speicherkarte hinterlassen Daten können direkt abgerufen werden. Das kleine Projekt dient mir persönlich dazu, mich in Ruby on Rails, CSS, HTML, JScript, C++ zu festigen.

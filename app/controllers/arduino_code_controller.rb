@@ -1,0 +1,2 @@
+class ArduinoCodeController < ApplicationController
+end

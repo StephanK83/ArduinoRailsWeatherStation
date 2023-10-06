@@ -33,6 +33,11 @@ en:
   navigation:
     home: home
     measurement_data: measurement data
-    contact: contact
-  welcome_mesage: Welcome to our mobile weather station project
+    contact: about
+  welcome_message: Welcome to our mobile weather station project
   go_to: Go to
+  time: time
+  temperature: temperature
+  humidity: humidty
+  ip_location: IP-based location
+  about: In Progress. :)
