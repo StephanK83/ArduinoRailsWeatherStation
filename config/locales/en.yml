@@ -34,6 +34,8 @@ en:
     home: home
     measurement_data: measurement data
     contact: about
+    forecast: forecast
+    review: review
   welcome_message: Welcome to our mobile weather station project
   go_to: Go to
   time: time

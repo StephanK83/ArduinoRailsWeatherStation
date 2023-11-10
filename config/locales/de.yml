@@ -3,6 +3,8 @@ de:
     home: Startseite
     measurement_data: Messdaten
     contact: Über
+    forecast: Vorhersage
+    review: Rückschau
   welcome_message: Willkommen bei unserem Wetterstationsprojekt
   go_to: Gehe zu
   time: Zeit
