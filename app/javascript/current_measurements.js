@@ -38,3 +38,10 @@ document.addEventListener("DOMContentLoaded", () => {
   initializeChart('humidityChartWeek', 'Wochendurchschnitt Luftfeuchtigkeit', 'rgba(54, 162, 235, 1)', 'data-humidities');
   initializeChart('humidityChartAll', 'Allzeitluftfeuchtigkeit', 'rgba(255, 206, 86, 1)', 'data-humidities');
 });
+
+function initMap() {
+  var map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 8,
+    center: { lat: -34.397, lng: 150.644 } // Standard-Koordinaten
+  });
+}
