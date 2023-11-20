@@ -26,7 +26,7 @@
     </table>
     <%= will_paginate @current_measurements %>
   </div>
-    <div id="last-location" data-lat="<%= @last_location&.latitude %>" data-lng="<%= @last_location&.longitude %>"></div>
+    <div id="last-location" data-lat="<%= @last_location&.[](:latitude) %>" data-lng="<%= @last_location&.[](:longitude) %>"></div>
     <div id="map" style="margin: 20px; height: 200px; width: 80%;"></div>
   <div class="chart_container">
     <canvas id="temperatureChart"
