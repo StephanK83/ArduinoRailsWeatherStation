@@ -40,6 +40,12 @@ header {
   align-items: center;
 }
 
+.table_container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
 .table_container, .chart_container {
   width: 95%;
   box-sizing: border-box;
