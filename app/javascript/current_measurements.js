@@ -40,8 +40,13 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function initMap() {
-  var map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 8,
-    center: { lat: -34.397, lng: 150.644 } // Standard-Koordinaten
-  });
+  var lastLocationElement = document.getElementById('last-location');
+  var lat = parseFloat(lastLocationElement.getAttribute('data-lat'));
+  var lng = parseFloat(lastLocationElement.getAttribute('data-lng'));
+
+  var mapOptions = {
+      center: new google.maps.LatLng(lat, lng),
+      zoom: 8
+  };
+  var map = new google.maps.Map(document.getElementById("map"), mapOptions);
 }

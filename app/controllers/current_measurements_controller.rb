@@ -34,6 +34,10 @@ class CurrentMeasurementsController < ApplicationController
     @timestamps_all = CurrentMeasurement.order(:created_at).pluck(:created_at)
     @humidities = CurrentMeasurement.where("created_at >= ?", Date.today.beginning_of_day).order(:created_at).pluck(:humidity)
     @humidities_all = CurrentMeasurement.order(:created_at).pluck(:humidity)
+
+    #für den letzten bekannten Standort
+    last_measurement = CurrentMeasurement.last
+    @last_location = last_measurement ? last_measurement.location_based_on_ip : nil
   end
 
   def create
