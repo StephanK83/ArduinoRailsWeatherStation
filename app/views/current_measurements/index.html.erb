@@ -44,6 +44,27 @@
       data-timestamps='<%= @timestamps_all.map { |t| t.strftime('%Y-%m-%d') }.to_json.html_safe %>'>
     </canvas>
   </div>
+  <div class="chart_container">
+    <canvas id="humidityChart"
+      data-humidities='<%= @humidities.to_json.html_safe %>'
+      data-timestamps='<%= @timestamps.map { |t| t.strftime('%H:%M') }.to_json.html_safe %>'>
+    </canvas>
+  </div>
+  <div class="chart_container">
+    <canvas id="humidityChartWeek"
+      data-humidities='<%= @humidities.to_json.html_safe %>'
+      data-timestamps='<%= @timestamps_week.map { |t| t.strftime('%a %H:%M') }.to_json.html_safe %>'>
+    </canvas>
+  </div>
+  <div class="chart_container">
+    <canvas id="humidityChartAll"
+      data-humidities='<%= @humidities_all.to_json.html_safe %>'
+      data-timestamps='<%= @timestamps_all.map { |t| t.strftime('%Y-%m-%d') }.to_json.html_safe %>'>
+    </canvas>
+  </div>
+</div>
+<!-- Weitere Canvas-Elemente für Wochen- und Allzeitdiagramme -->
+
 <%= javascript_include_tag 'current_measurements' %>
 
 <!--
