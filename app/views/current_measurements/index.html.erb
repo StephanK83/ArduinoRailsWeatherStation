@@ -1,6 +1,6 @@
 <div class="page_content">
-  <h1><%= t('navigation.measurement_data') %></h1>
   <div class="table_container">
+    <h1><%= t('navigation.measurement_data') %></h1>
     <%= will_paginate @current_measurements %>
     <table border="3">
     <thead>
@@ -25,8 +25,8 @@
       </tbody>
     </table>
     <%= will_paginate @current_measurements %>
-    <div id="map" style="margin-left: 20px; height: auto; width: 50%;"></div>
   </div>
+    <div id="map" style="margin: 20px; height: auto; width: auto;"></div>
   <div class="chart_container">
     <canvas id="temperatureChart"
       data-temperatures='<%= @temperatures.to_json.html_safe %>'
