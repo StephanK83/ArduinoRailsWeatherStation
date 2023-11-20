@@ -36,8 +36,13 @@ class CurrentMeasurementsController < ApplicationController
     @humidities_all = CurrentMeasurement.order(:created_at).pluck(:humidity)
 
     #für den letzten bekannten Standort
-    last_measurement = CurrentMeasurement.last
-    @last_location = last_measurement ? last_measurement.location_based_on_ip : nil
+    if @current_measurements.any?
+      last_measurement = @current_measurements.first
+      location = Geocoder.search(last_measurement.location_based_on_ip).first
+      if location
+        @last_location = { latitude: location.latitude, longitude: location.longitude }
+      end
+    end
   end
 
   def create

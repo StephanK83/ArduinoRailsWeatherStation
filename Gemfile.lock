@@ -97,6 +97,7 @@ GEM
     ffi (1.16.2)
     font-awesome-rails (4.7.0.8)
       railties (>= 3.2, < 8.0)
+    geocoder (1.8.2)
     globalid (1.2.0)
       activesupport (>= 6.1)
     i18n (1.14.1)
@@ -250,6 +251,7 @@ DEPENDENCIES
   debug
   dotenv-rails
   font-awesome-rails
+  geocoder
   importmap-rails
   jbuilder
   pg

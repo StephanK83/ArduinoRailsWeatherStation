@@ -7,6 +7,9 @@ gem 'sass-rails'
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails"
 
+# Für Standortanzeige
+gem "geocoder"
+
 # postgres
 gem "pg"
 
